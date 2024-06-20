@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPU Surrey Library ETA</title>
+	<link rel="stylesheet" href="styles.css">
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+		
+    </style>
+	
+</head>
+<body>
+    <h1>KPU Surrey Library ETA</h1>
+    <div id="map"></div>
+	<div class ="info">
+    <p>Your current location: <span id="current-location"></span></p>
+    <p>Distance to KPU Surrey Library: <span id="distance"></span> km</p>
+
+    <script>
+        // Initialize Google Maps
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 49.1867, lng: -122.849},
+                zoom: 15
+            });
+
+            // Try HTML5 geolocation
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    var marker = new google.maps.Marker({
+                        position: pos,
+                        map: map,
+                        title: 'Your Location'
+                    });
+
+                    map.setCenter(pos);
+
+                    // Display current location
+                    document.getElementById('current-location').innerText = pos.lat.toFixed(6) + ', ' + pos.lng.toFixed(6);
+
+                    // Calculate distance to KPU Surrey Library (example coordinates)
+                    var kpuSurreyLibrary = new google.maps.LatLng(49.1871, -122.8535);
+                    var distance = google.maps.geometry.spherical.computeDistanceBetween(pos, kpuSurreyLibrary) / 1000; // in km
+                    document.getElementById('distance').innerText = distance.toFixed(2);
+                }, function() {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            // Handle error
+        }
+    </script>
+    <!-- Load Google Maps API -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDr7CMYyuvt09XrSyqYrMcFJ4O79CXb9JM&callback=initMap&libraries=geometry&callback=initMap">
+    </script>
+</body>
+</html>

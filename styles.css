@@ -1,0 +1,49 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa; /* Light grey background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    max-width: 600px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #007bff; /* Blue header color */
+}
+
+#map {
+    height: 300px;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.info {
+    background-color: #f0f0f0; /* Light grey background for info section */
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.info p {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333; /* Dark text color */
+}
+
+.info span {
+    font-weight: bold;
+    color: #28a745; /* Green color for distance */
+}
