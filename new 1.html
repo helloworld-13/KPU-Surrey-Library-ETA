@@ -64,14 +64,12 @@
     </div>
 
     <script>
-        // Initialize Google Maps
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: 49.1867, lng: -122.849 },
                 zoom: 15
             });
 
-            // Try HTML5 geolocation
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = {
@@ -87,10 +85,8 @@
 
                     map.setCenter(pos);
 
-                    // Display current location
                     document.getElementById('current-location').innerText = pos.lat.toFixed(6) + ', ' + pos.lng.toFixed(6);
 
-                    // Calculate distance to KPU Surrey Library (example coordinates)
                     var kpuSurreyLibrary = new google.maps.LatLng(49.1871, -122.8535);
                     var distance = google.maps.geometry.spherical.computeDistanceBetween(pos, kpuSurreyLibrary) / 1000; // in km
                     document.getElementById('distance').innerText = distance.toFixed(2);
@@ -98,7 +94,6 @@
                     handleLocationError(true, map.getCenter());
                 });
             } else {
-                // Browser doesn't support Geolocation
                 handleLocationError(false, map.getCenter());
             }
         }
@@ -107,9 +102,9 @@
             console.log('Error: Geolocation service failed.');
         }
     </script>
-    <!-- Load Google Maps API -->
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3PIGP6IYgAxq7w8EXWEkC8ihchDhyy_E&libraries=geometry&callback=initMap">
     </script>
 </body>
 </html>
+
